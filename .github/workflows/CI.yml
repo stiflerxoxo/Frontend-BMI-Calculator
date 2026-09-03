@@ -1,29 +1,52 @@
-name: Frontend CI
+name: Frontend-BMI Calculator
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
+  # pull_request:
+  #   branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      # Step 1: Clone your code
+      - name: Checkout repository code
         uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
+
+      # Step 2: Log in to your Docker Hub account
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v4
         with:
-          node-version: 20
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Install dependencies
-        run: npm install
+      # Step 3: Build the Dockerfile and push it to Docker Hub
+      - name: Build and push Docker image to registry
+        uses: docker/build-push-action@v7
+        with:
+          context: . # Looks for the Dockerfile in the root directory
+          push: true # Instructs the action to push the image after a successful build
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/ecom-app:${{ github.ref_name }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/my-app:${{ github.sha }}
 
-      - name: Run lint
-        run: npm run lint
+         
 
-      - name: Build project
-        run: npm run build
+
+
+
+
+
+
+      # - name: Install dependencies
+      #   run: npm install
+
+      # - name: Run lint
+      #   run: npm run lint
+
+      # - name: Build project
+      #   run: npm run build
