@@ -25,14 +25,14 @@ jobs:
 
       # Step 3: Build the Dockerfile and push it to Docker Hub
       - name: Build and push Docker image to registry
-        uses: docker/build-push-action@v7
+        uses: docker/build-push-action@v6
         with:
           context: . # Looks for the Dockerfile in the root directory
           push: true # Instructs the action to push the image after a successful build
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/ecom-app:${{ github.ref_name }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/my-app:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/Frontend-BMI-Calculator:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/Frontend-BMI-Calculator:${{ github.ref_name }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/Frontend-BMI-Calculator:${{ github.sha }}
 
          
 
