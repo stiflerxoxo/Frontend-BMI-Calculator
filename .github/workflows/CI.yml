@@ -30,9 +30,9 @@ jobs:
           context: . # Looks for the Dockerfile in the root directory
           push: true # Instructs the action to push the image after a successful build
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/Frontend-BMI-Calculator:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/Frontend-BMI-Calculator:${{ github.ref_name }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/Frontend-BMI-Calculator:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/frontend-bMI-calculator:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/frontend-bMI-calculator:${{ github.ref_name }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/frontend-bMI-calculator:${{ github.sha }}
 
       
       # ==========================================
