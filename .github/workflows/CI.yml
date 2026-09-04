@@ -1,4 +1,4 @@
-name: Frontend-BMI Calculator
+name: Frontend-BMI-Calculator
 
 on:
   push:
@@ -38,23 +38,23 @@ jobs:
       # ==========================================
       # PHASE 4: CD (REMOTE SERVER DEPLOYMENT)
       # ==========================================
-      - name: Deploy application
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.INSTANCE_IP }}
-          username: ubuntu
-          key:  ${{ secrets.SSH_PRIVATE_KEY }}
-          options: "-o StrictHostKeyChecking=no" 
-          script: |
-            # Log in to Docker Hub on your remote EC2/VPS server so it has access permissions
-            echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login --username "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+      # - name: Deploy application
+      #   uses: appleboy/ssh-action@v1.2.0
+      #   with:
+      #     host: ${{ secrets.INSTANCE_IP }}
+      #     username: ubuntu
+      #     key:  ${{ secrets.SSH_PRIVATE_KEY }}
+      #     options: "-o StrictHostKeyChecking=no" 
+      #     script: |
+      #       # Log in to Docker Hub on your remote EC2/VPS server so it has access permissions
+      #       echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login --username "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
             
-            # Navigate to your deployment folder on the server
-            cd /home/ubuntu/Frontend-BMI-Calculator
+      #       # Navigate to your deployment folder on the server
+      #       cd /home/ubuntu/Frontend-BMI-Calculator
             
-            # Pull down the latest built image layer and recreate the running container
-            docker compose pull
-            docker compose up --force-recreate -d   
+      #       # Pull down the latest built image layer and recreate the running container
+      #       docker compose pull
+      #       docker compose up --force-recreate -d   
 
 
 
