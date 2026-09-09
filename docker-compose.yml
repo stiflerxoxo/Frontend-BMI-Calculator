@@ -1,1 +1,8 @@
+#version: "3.8"     only needed if the version is old
 services:
+# Define the services that will rin in your application
+  devopswebapp:  # name can be anything 
+    image: stiflerhub/frontend-bmi-calculator
+    container_name: frontend-bmi-calculaotr  # Container can be anything if not written then auto generated
+    ports: 
+      - "82:80"
