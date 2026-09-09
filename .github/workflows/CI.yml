@@ -54,7 +54,7 @@ jobs:
             
             # Pull down the latest built image layer and recreate the running container
             # docker compose pull
-            docker compose up -d
+            sudo docker compose up -d
             # docker compose up --force-recreate -d   
 
 
