@@ -1,4 +1,4 @@
-name: BUILD PUSH and DEPLOY application into ECR
+name: CI/CD pipeline in Github Action for ECR (Elastic Container Registry)
 
 on:
   push:
@@ -54,7 +54,7 @@ jobs:
           proxy_options: "-o StrictHostKeyChecking=no" # Note: Changed 'options' to 'proxy_options' to match current action syntax
           script: |
             # Log into ECR on your remote server using your AWS credentials 
-            AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.ECR_REPOSITORY_URI }}
+            AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin ${{ secrets.ECR_REPOSITORY_URI }}
             
             # Navigate to your deployment folder on the server
             cd /home/ubuntu/app/devops-webapp
