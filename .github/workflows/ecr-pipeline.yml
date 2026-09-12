@@ -39,7 +39,7 @@ jobs:
           docker build -t devops-webapp .
           
           # Tag the image using the ECR URI format and the current branch name
-          docker tag devops-web $ECR_REPOSITORY_URI/devops-webapp:$BRANCH_NAME
+          docker tag devops-webapp $ECR_REPOSITORY_URI/devops-webapp:$BRANCH_NAME
           
           # Push the final image to your remote container registry
           docker push $ECR_REPOSITORY_URI/devops-webapp:$BRANCH_NAME
