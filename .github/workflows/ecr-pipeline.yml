@@ -36,13 +36,13 @@ jobs:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
           # Build the image locally
-          docker build -t devops-web .
+          docker build -t devops-webapp .
           
           # Tag the image using the ECR URI format and the current branch name
-          docker tag devops-web $ECR_REPOSITORY_URI/devops-web:$BRANCH_NAME
+          docker tag devops-web $ECR_REPOSITORY_URI/devops-webapp:$BRANCH_NAME
           
           # Push the final image to your remote container registry
-          docker push $ECR_REPOSITORY_URI/devops-web:$BRANCH_NAME
+          docker push $ECR_REPOSITORY_URI/devops-webapp:$BRANCH_NAME
 
       # 5. Connect to your server over SSH and deploy the latest app container
       - name: Deploy application
