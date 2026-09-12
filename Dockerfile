@@ -38,6 +38,7 @@ RUN npm install
 RUN npm install react-icons
 
 COPY . .
+RUN ls -la
 RUN npm run build
 
 
