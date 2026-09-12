@@ -35,11 +35,11 @@ WORKDIR /app
 
 COPY package*.json ./
 RUN npm install
-RUN npm install react-icons
+# RUN npm install react-icons
 
 COPY . .
-# RUN npm run build
-RUN SKIP_PREFLIGHT_CHECK=true npm run build
+RUN npm run build
+# RUN SKIP_PREFLIGHT_CHECK=true npm run build
 
 
 
