@@ -29,7 +29,7 @@
 ########## Dockerfile for ECR ##########
 
 # ---- Stage 1: Build React App ----
-FROM 265020546803.dkr.ecr.eu-north-1.amazonaws.com/node:alpine AS builder
+FROM 265020546803.dkr.ecr.eu-north-1.amazonaws.com/node:16-alpine AS builder
 
 WORKDIR /app
 
@@ -38,7 +38,6 @@ RUN npm install
 RUN npm install react-icons
 
 COPY . .
-RUN ls -la
 RUN npm run build
 
 
