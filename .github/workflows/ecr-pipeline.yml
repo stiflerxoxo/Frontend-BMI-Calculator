@@ -51,7 +51,6 @@ jobs:
           host: ${{ secrets.INSTANCE_IP }}
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          proxy_options: "-o StrictHostKeyChecking=no" # Note: Changed 'options' to 'proxy_options' to match current action syntax
           script: |
             # Log into ECR on your remote server using your AWS credentials 
             AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin ${{ secrets.ECR_REPOSITORY_URI }}
