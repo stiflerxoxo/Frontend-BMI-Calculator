@@ -3,7 +3,8 @@ services:
 # Define the services that will rin in your application
   devopswebapp:  # name can be anything 
     # image: stiflerhub/frontend-bmi-calculator
-    image: 265020546803.dkr.ecr.eu-north-1.amazonaws.com/webapp
+    image: 265020546803.dkr.ecr.eu-north-1.amazonaws.com/webapp:main
     container_name: frontend-bmi-calculaotr  # Container can be anything if not written then auto generated
+    restart: always
     ports: 
       - "82:80"
